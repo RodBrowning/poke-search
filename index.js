@@ -51,13 +51,13 @@ require("yargs")
 									);
 								} else {
 									console.log(`pokemon id: ${id}`);
-									console.log(`pokemon name: ${name}`);
+									console.log(`pokemon name: ${name.charAt(0).toUpperCase()}${name.substr(1).toLowerCase()}`);
 									console.log(`pokemon weight: ${weight} kg`);
 									console.log(`pokemon height: ${height}`);
-									console.log(`pokemon abilities: ${abilities[0].ability.name}`);
+									console.log(`pokemon abilities: ${abilities[0].ability.name.charAt(0).toUpperCase()}${abilities[0].ability.name.substr(1).toLowerCase()}`);
 									var num = 10;
 									for(let i = moves.length-10; i<moves.length; i++){
-										console.log(`pokemon main movement ${num}: ${moves[i].move.name} `);
+										console.log(`pokemon main movement ${num}: ${moves[i].move.name.charAt(0).toUpperCase()}${moves[i].move.name.substr(1).toLowerCase()} `);
 										num--;
 									}
 								}
