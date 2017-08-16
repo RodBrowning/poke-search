@@ -40,10 +40,11 @@ require("yargs")
 				userChoise.question(
 					"What is the number or name of your pokemon? \n",
 					answer => {
-						fetch("https://pokeapi.co/api/v2/pokemon/" + answer)
+						let answerLower = answer.toLowerCase()
+						fetch("https://pokeapi.co/api/v2/pokemon/" + answerLower)
 							.then(data => data.json())
 							.then((data, err) => {
-								let { id, name, weight, height } = data;
+								let { id, name, weight, height, abilities, moves  } = data;
 								if (typeof id == "undefined") {
 									console.log(
 										`pokemon's name or number is wrong`
@@ -53,6 +54,12 @@ require("yargs")
 									console.log(`pokemon name: ${name}`);
 									console.log(`pokemon weight: ${weight} kg`);
 									console.log(`pokemon height: ${height}`);
+									console.log(`pokemon abilities: ${abilities[0].ability.name}`);
+									var num = 10;
+									for(let i = moves.length-10; i<moves.length; i++){
+										console.log(`pokemon main movement ${num}: ${moves[i].move.name} `);
+										num--;
+									}
 								}
 							})
 							.catch(err => {
